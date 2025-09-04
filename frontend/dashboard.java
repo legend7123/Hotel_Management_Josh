@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
+import javax.swing.Timer;
 public class dashboard {
     public static void main(String args[]){
         JFrame frame = new JFrame("Dashboard");
@@ -92,8 +93,18 @@ public class dashboard {
 
     JLabel dateTimeLabel = new JLabel("Date and Time:");
     dateTimeLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-    dateTimeLabel.setBounds(460, 465, 200, 30);
+    dateTimeLabel.setBounds(460, 465, 400, 30);
     frame.add(dateTimeLabel);
+  
+    Timer timer = new Timer(1000, e -> {
+        
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String dateTime = now.format(formatter);
+    
+        dateTimeLabel.setText("Date and Time: " + dateTime);
+    });
+    timer.start();
 
     frame.setVisible(true);
 
