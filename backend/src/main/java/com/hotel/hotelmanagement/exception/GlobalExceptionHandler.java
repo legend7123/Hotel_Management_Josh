@@ -1,5 +1,6 @@
 package com.hotel.hotelmanagement.exception;
 
+import com.hotel.hotelmanagement.dto.ErrorResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,14 +8,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(UserNotFound.class)
-    public ResponseEntity<String> handleUserNotFound(UserNotFound ex){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponseDto> handleUserNotFound(UserNotFoundException ex){
+        ErrorResponseDto response = new ErrorResponseDto(HttpStatus.NOT_FOUND.value(),ex.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleRuntimeException(RuntimeException ex){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    @ExceptionHandler(UserExistsException.class)
+    public ResponseEntity<ErrorResponseDto> handleUserExists(UserExistsException ex){
+        ErrorResponseDto response = new ErrorResponseDto(HttpStatus.CONFLICT.value(), ex.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.CONFLICT);
     }
 }
-
