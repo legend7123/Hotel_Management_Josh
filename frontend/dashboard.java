@@ -101,8 +101,3 @@ public class dashboard {
 
 }
 
-//To do
-//Total Rooms
-//Welcome to hotel reservation 
-//Chose an option from the sidebar
-//Date and time
