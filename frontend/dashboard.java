@@ -21,9 +21,8 @@ public class dashboard {
         title.setFont(title.getFont().deriveFont(24.0f));
         title.setBounds(20, 20, 400, 50);
         navbar.add(title);
-
+        // Welcome label on the navbar
         JLabel welcomeLabel = new JLabel("Welcome to the Dashboard");
-
         welcomeLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         welcomeLabel.setBounds(740, 20, 400, 50);
         welcomeLabel.setForeground(new Color(255, 255, 255));
@@ -34,7 +33,7 @@ public class dashboard {
         sidebar.setBackground(new Color(1, 29, 95));
         frame.add(sidebar);
         sidebar.setLayout(null);
-
+    // Sidebar buttons
     JButton btn1 = new JButton("Booking");
     btn1.setBounds(10, 50, 180, 100);
     btn1.setFont(btn1.getFont().deriveFont(16.0f));
@@ -66,3 +65,9 @@ public class dashboard {
     }
 
 }
+
+//To do
+//Total Rooms
+//Welcome to hotel reservation 
+//Chose an option from the sidebar
+//Date and time
