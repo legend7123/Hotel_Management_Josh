@@ -6,7 +6,6 @@ public class dashboard {
         JFrame frame = new JFrame("Dashboard");
         frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
         frame.setLayout(null);
         frame.setResizable(false);
 
@@ -61,6 +60,42 @@ public class dashboard {
     sidebar.add(btn4);
     btn4.setBackground(new Color(255, 0, 0));
     btn4.setFocusPainted(false);
+
+    JPanel topbar = new JPanel();
+    topbar.setBounds(200, 100, 800, 150);
+    topbar.setBackground(Color.LIGHT_GRAY);
+    frame.add(topbar);
+    topbar.setLayout(null);
+
+    JPanel RoomsPanel = new JPanel();
+    RoomsPanel.setBounds(20, 20, 200, 100);
+    RoomsPanel.setBackground(new Color(153, 255, 255));
+    topbar.add(RoomsPanel);
+    RoomsPanel.setFocusable(false);
+    RoomsPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    JLabel totalRoomsLabel = new JLabel("Total Rooms: 50");
+    totalRoomsLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+    totalRoomsLabel.setBounds(30, 30, 200, 30);
+   
+    RoomsPanel.add(totalRoomsLabel);
+    RoomsPanel.setLayout(null);
+
+    JLabel welcomeLabel1 = new JLabel("Welcome to Hotel Reservation");
+    welcomeLabel1.setFont(new Font("Arial", Font.PLAIN, 24));
+    welcomeLabel1.setBounds(440, 400, 400, 30);
+    frame.add(welcomeLabel1);
+
+    JLabel chooseOptionLabel = new JLabel("Choose an option from the sidebar");
+    chooseOptionLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+    chooseOptionLabel.setBounds(450, 435, 400, 30);
+    frame.add(chooseOptionLabel);
+
+    JLabel dateTimeLabel = new JLabel("Date and Time:");
+    dateTimeLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+    dateTimeLabel.setBounds(460, 465, 200, 30);
+    frame.add(dateTimeLabel);
+
+    frame.setVisible(true);
 
     }
 
