@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/book.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/book.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("Hotel Management System");
         stage.setScene(scene);
