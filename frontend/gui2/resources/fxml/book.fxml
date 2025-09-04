@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.BookController">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <Label text="Booking Management"
+                   style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#goBack" />
+        </HBox>
+    </top>
+
+    <!-- Center Table -->
+    <center>
+        <VBox spacing="10" padding="10">
+            <TableView fx:id="bookingTable" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colGuest" text="Guest Name" prefWidth="150"/>
+                    <TableColumn fx:id="colRoom" text="Room No" prefWidth="100"/>
+                    <TableColumn fx:id="colCheckIn" text="Check-In" prefWidth="120"/>
+                    <TableColumn fx:id="colCheckOut" text="Check-Out" prefWidth="120"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="New Booking" onAction="#handleNewBooking"/>
+                <Button text="Extend Booking" onAction="#handleExtendBooking"/>
+                <Button text="Cancel Booking" onAction="#handleCancelBooking"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
