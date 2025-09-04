@@ -1,9 +1,10 @@
 package com.hotel.hotelmanagement.controller;
 
+import com.hotel.hotelmanagement.dto.UserRequestDto;
+import com.hotel.hotelmanagement.dto.UserResponseDto;
 import com.hotel.hotelmanagement.model.User;
 import com.hotel.hotelmanagement.service.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,48 +20,59 @@ public class UserController {
     }
 
     //get all users
-    @GetMapping()
-    public ResponseEntity<List<User>> getAllUsers(){
-        return ResponseEntity.ok(userService.getUsers());
+    @GetMapping
+    public ResponseEntity<UserResponseDto> getAllUsers(){
+         List<User> users= userService.getUsers();
+         UserResponseDto response = new UserResponseDto(200,users);
+         return ResponseEntity.ok(response);
     }
 
     //get user by id
     @GetMapping("/{userid}")
-    public ResponseEntity<User> getUserById(@PathVariable Long userid){
-        return ResponseEntity.ok(userService.getById(userid));
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long userid){
+        User existingUser = userService.getById(userid);
+        UserResponseDto response = new UserResponseDto(200,existingUser);
+        return ResponseEntity.ok(response);
     }
 
     //get loyalty points by id
     @GetMapping("/{userid}/loyalty")
-    public ResponseEntity<Integer> getUserLoyalty(@PathVariable Long userid){
-        return ResponseEntity.ok(userService.getLoyalty(userid));
+    public ResponseEntity<UserResponseDto> getUserLoyalty(@PathVariable Long userid){
+        Integer loyalty = userService.getLoyalty(userid);
+        UserResponseDto response = new UserResponseDto(200,loyalty);
+        return ResponseEntity.ok(response);
 
     }
 
     //create new user
     @PostMapping()
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto dto){
+        User user= new User(dto.getUsername(), dto.getEmail(), dto.getPhone(),dto.getType());
         User newUser = userService.saveUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+        UserResponseDto response = new UserResponseDto(201,newUser);
+        return ResponseEntity.ok(response);
     }
 
-    //update type
-    @PutMapping("/{userid}/type")
-    public ResponseEntity<User> updateType(@PathVariable Long userid,@RequestParam String type){
-        return ResponseEntity.ok(userService.updateType(userid,type));
-    }
+//    //update type
+//    @PutMapping("/{userid}/type")
+//    public ResponseEntity<User> updateType(@PathVariable Long userid,@RequestParam String type){
+//        return ResponseEntity.ok(userService.updateType(userid,type));
+//    }
 
     //update loyalty
     @PutMapping("/{userid}/loyalty")
-    public ResponseEntity<User> updateLoyalty(@PathVariable Long userid,@RequestParam Integer loyalty){
-        return ResponseEntity.ok(userService.updateLoyalty(userid,loyalty));
+    public ResponseEntity<UserResponseDto> updateLoyalty(@PathVariable Long userid,@RequestParam Integer loyalty){
+        User user =  userService.updateLoyalty(userid,loyalty);
+        UserResponseDto response = new UserResponseDto(200,user);
+        return ResponseEntity.ok(response);
     }
 
     //delete user by id
     @DeleteMapping("/{userid}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long userid){
+    public ResponseEntity<UserResponseDto> deleteUser(@PathVariable Long userid){
         userService.deleteUser(userid);
-        return ResponseEntity.noContent().build();
+        UserResponseDto response = new UserResponseDto(204,"User deleted");
+        return ResponseEntity.ok(response);
     }
 }
 

@@ -15,7 +15,7 @@ public class User {
     private String username;
     private String email;
     private String phone;
-    private String type;
+    private  String type;
     private Integer loyalty=0;
 
     //one user -> many room bookings
@@ -38,7 +38,6 @@ public class User {
         this.email=email;
         this.phone=phone;
         this.type=type;
-//        this.loyalty=0;
     };
 
     //Getters
@@ -58,7 +57,7 @@ public class User {
         return phone;
     }
 
-    public  String getType(){
+    public String getType() {
         return type;
     }
 
@@ -79,11 +78,11 @@ public class User {
         this.phone=phone;
     }
 
-    public void setLoyalty(Integer loyalty){
-        this.loyalty=loyalty;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setType(String type){
-        this.type=type;
+    public void setLoyalty(Integer loyalty){
+        this.loyalty=loyalty;
     }
 }

@@ -1,6 +1,7 @@
 package com.hotel.hotelmanagement.service;
 
-import com.hotel.hotelmanagement.exception.UserNotFound;
+import com.hotel.hotelmanagement.exception.UserExistsException;
+import com.hotel.hotelmanagement.exception.UserNotFoundException;
 import com.hotel.hotelmanagement.model.User;
 import com.hotel.hotelmanagement.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -19,7 +20,7 @@ public class UserService {
     //get user by id
     public User getById(Long id){
         return userRepository.findById(id).
-                orElseThrow(()-> new UserNotFound("User not found"));
+                orElseThrow(()-> new UserNotFoundException("User not found"));
     }
 
     //get all users
@@ -34,16 +35,22 @@ public class UserService {
 
     //create user
     public User saveUser(User user){
+        if(userRepository.existsByEmail(user.getEmail())){
+            throw new UserExistsException("Email exists");
+        } else if (userRepository.existsByPhone(user.getPhone())) {
+            throw new UserExistsException("Phone exists");
+        }
+
         return userRepository.save(user);
     }
 
-    //update type
-    @Transactional
-    public User updateType(Long id,String type){
-        User user = getById(id);
-        user.setType(type);
-        return user;
-    }
+//    //update type
+//    @Transactional
+//    public User updateType(Long id,String type){
+//        User user = getById(id);
+//        user.setType(type);
+//        return user;
+//    }
 
     //update loyalty
     @Transactional
