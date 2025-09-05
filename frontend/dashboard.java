@@ -144,28 +144,8 @@ public class dashboard {
         if (result == JOptionPane.YES_OPTION) {
             
             frame.dispose();
+               login.main(new String[]{});
             
-    
-            try {
-                SwingUtilities.invokeLater(() -> {
-            
-                    JFrame loginFrame = new JFrame("Login");
-                    loginFrame.setSize(600, 400);
-                    loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    loginFrame.setLocationRelativeTo(null);
-                    loginFrame.setResizable(false);
-                    
-                    
-                    login.main(new String[]{});
-                });
-            } catch (Exception ex) {
-
-                JOptionPane.showMessageDialog(null, 
-                    "Error redirecting to login page: " + ex.getMessage(), 
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
-            }
         }
     });
    
