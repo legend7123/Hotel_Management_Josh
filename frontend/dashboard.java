@@ -6,7 +6,6 @@ public class dashboard {
         JFrame frame = new JFrame("Dashboard");
         frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
         frame.setLayout(null);
         frame.setResizable(false);
 
@@ -62,12 +61,115 @@ public class dashboard {
     btn4.setBackground(new Color(255, 0, 0));
     btn4.setFocusPainted(false);
 
-    }
+    JPanel topbar = new JPanel();
+    topbar.setBounds(200, 100, 800, 150);
+    topbar.setBackground(Color.LIGHT_GRAY);
+    frame.add(topbar);
+    topbar.setLayout(null);
+
+    JPanel RoomsPanel = new JPanel();
+    RoomsPanel.setBounds(20, 20, 200, 100);
+    RoomsPanel.setBackground(new Color(153, 255, 255));
+    topbar.add(RoomsPanel);
+   
+    RoomsPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    JLabel totalRoomsLabel = new JLabel("Total Rooms: 50");
+    totalRoomsLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+    totalRoomsLabel.setBounds(30, 30, 200, 30);
+   
+    RoomsPanel.add(totalRoomsLabel);
+    RoomsPanel.setLayout(null);
+
+    JPanel TotalGuestsPanel = new JPanel();
+    TotalGuestsPanel.setBounds(285, 20, 200, 100);
+    topbar.add(TotalGuestsPanel);
+    TotalGuestsPanel.setBackground(new Color(142, 0, 213));
+    TotalGuestsPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+    JLabel totalGuestsLabel = new JLabel("Current Guests: 39");
+    totalGuestsLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+    TotalGuestsPanel.add(totalGuestsLabel);
+    totalGuestsLabel.setBounds(30, 30, 200, 30);
+    TotalGuestsPanel.setLayout(null);
+
+    JPanel TotalRevenuePanel = new JPanel();
+    TotalRevenuePanel.setBounds(560, 20, 200, 100);
+    topbar.add(TotalRevenuePanel);
+    TotalRevenuePanel.setBackground(new Color(0, 213, 164));
+    TotalRevenuePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    TotalRevenuePanel.setLayout(null);
+
+    JLabel totalRevenueLabel = new JLabel("Total Revenue: $5000");
+    totalRevenueLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+    TotalRevenuePanel.add(totalRevenueLabel);
+    totalRevenueLabel.setBounds(10, 30, 200, 30);
+
+    JLabel welcomeLabel1 = new JLabel("Welcome to Hotel Reservation");
+    welcomeLabel1.setFont(new Font("Arial", Font.PLAIN, 24));
+    welcomeLabel1.setBounds(440, 400, 400, 30);
+    frame.add(welcomeLabel1);
+
+    JLabel chooseOptionLabel = new JLabel("Choose an option from the sidebar");
+    chooseOptionLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+    chooseOptionLabel.setBounds(450, 435, 400, 30);
+    frame.add(chooseOptionLabel);
+
+    JLabel dateTimeLabel = new JLabel("Date and Time:");
+    dateTimeLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+    dateTimeLabel.setBounds(460, 465, 400, 30);
+    frame.add(dateTimeLabel);
+  
+    // Timer to update date and time every second
+    Timer timer= new Timer(1000,e->{
+        java.time.LocalDateTime now =java.time.LocalDateTime.now();
+        java.time.format.DateTimeFormatter formatter=java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String dateTime=now.format(formatter);
+        dateTimeLabel.setText("Date and Time: "+dateTime);
+    });
+    timer.start();
+
+
+    frame.setVisible(true);
+
+    btn4.addActionListener(e -> {
+        
+        int result = JOptionPane.showConfirmDialog(
+            frame,
+            "Are you sure you want to logout?",
+            "Confirm Logout",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+        
+        if (result == JOptionPane.YES_OPTION) {
+            
+            frame.dispose();
+            
+    
+            try {
+                SwingUtilities.invokeLater(() -> {
+            
+                    JFrame loginFrame = new JFrame("Login");
+                    loginFrame.setSize(600, 400);
+                    loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    loginFrame.setLocationRelativeTo(null);
+                    loginFrame.setResizable(false);
+                    
+                    
+                    login.main(new String[]{});
+                });
+            } catch (Exception ex) {
+
+                JOptionPane.showMessageDialog(null, 
+                    "Error redirecting to login page: " + ex.getMessage(), 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            }
+        }
+    });
+   
 
 }
 
-//To do
-//Total Rooms
-//Welcome to hotel reservation 
-//Chose an option from the sidebar
-//Date and time
+}

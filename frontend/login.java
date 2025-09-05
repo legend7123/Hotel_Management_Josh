@@ -40,6 +40,7 @@ public class login{
         loginButton.setForeground(Color.red);
         loginButton.setFocusable(false);
         panel.add(loginButton);
+        
         // Adding action listener to the login button
         //loginButton.addActionListener(e -> {
            // String password = new String(passwordInput.getPassword());
@@ -59,4 +60,6 @@ public class login{
 
 
     }
+
+    
 }
