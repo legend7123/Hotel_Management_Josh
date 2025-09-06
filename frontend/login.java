@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 // The hotel system uses a passkey which identifies each hotel and access its services
 public class login{
     public static void main(String args [])
@@ -39,7 +38,9 @@ public class login{
         JButton loginButton = new JButton("Login");//The login button
         loginButton.setBounds(340, 140, 100, 30);
         loginButton.setForeground(Color.red);
+        loginButton.setFocusable(false);
         panel.add(loginButton);
+        
         // Adding action listener to the login button
         //loginButton.addActionListener(e -> {
            // String password = new String(passwordInput.getPassword());
@@ -59,4 +60,6 @@ public class login{
 
 
     }
+
+    
 }
