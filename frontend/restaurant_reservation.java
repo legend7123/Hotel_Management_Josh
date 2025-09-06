@@ -43,19 +43,45 @@ public class restaurant_reservation {
             JLabel guestsLabel = new JLabel("Number of Guests:");
             guestsLabel.setBounds(50, 200, 150, 30);
             panel.add(guestsLabel);
-            JTextField guestsField = new JTextField();
-            guestsField.setBounds(200, 200, 150, 30);
-            panel.add(guestsField);
+            JSpinner guestsSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
+            guestsSpinner.setBounds(200, 200, 150, 30);
+            panel.add(guestsSpinner);
             JButton submitButton = new JButton("Submit");
             submitButton.setBounds(200, 300, 100, 30);
             panel.add(submitButton);
             submitButton.addActionListener(e -> {
-                String name = nameField.getText();
-                String date = dateField.getText();
-                String time = timeField.getText();
-                String guests = guestsField.getText();
-               
-                JOptionPane.showMessageDialog(frame, "Reservation made for " + name + " on " + date + " at " + time + " for " + guests + " guests.");
+                String name = nameField.getText().trim();
+                String date = dateField.getText().trim();
+                String time = timeField.getText().trim();
+                int guests = (int) guestsSpinner.getValue();
+                StringBuilder errorMsg = new StringBuilder();
+                if (name.isEmpty()) errorMsg.append("- Name is required.\n");
+                if (date.isEmpty()) errorMsg.append("- Date is required.\n");
+                if (time.isEmpty()) errorMsg.append("- Time is required.\n");
+                if (guests < 1) errorMsg.append("- Number of guests must be at least 1.\n");
+                java.time.LocalDateTime reservationDateTime = null;
+                if (errorMsg.length() == 0) {
+                    try {
+                        java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                        reservationDateTime = java.time.LocalDateTime.parse(date + " " + time, formatter);
+                        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+                        java.time.LocalDateTime maxDate = now.plusDays(5);
+                        if (reservationDateTime.isBefore(now)) {
+                            errorMsg.append("- Reservation time cannot be in the past.\n");
+                        } else if (reservationDateTime.isAfter(maxDate)) {
+                            errorMsg.append("- Reservation can only be made up to 5 days in advance.\n");
+                        }
+                    } catch (Exception ex) {
+                        errorMsg.append("- Invalid date or time format. Use DD/MM/YYYY for date and HH:MM for time.\n");
+                    }
+                }
+                if (errorMsg.length() > 0) {
+                    JOptionPane.showMessageDialog(frame, errorMsg.toString(), "Missing or Invalid Information", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(frame,
+                        "Reservation made for " + name + " on " + date + " at " + time + " for " + guests + " guests.",
+                        "Reservation Confirmed", JOptionPane.INFORMATION_MESSAGE);
+                }
             });
 
             frame.setVisible(true);
