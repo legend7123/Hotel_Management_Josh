@@ -150,6 +150,9 @@ public class dashboard {
         }
     });
    
+    btn2.addActionListener(e -> {
+        restaurant_reservation.main(new String[]{});
+    });
 
 }
 
