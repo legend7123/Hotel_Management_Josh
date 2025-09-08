@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -10,7 +11,7 @@ public class BookingFrame extends JFrame {
 
     public BookingFrame() {
         setTitle("Bookings");
-        setSize(1200, 600);
+        setSize(1800, 900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -68,19 +69,75 @@ public class BookingFrame extends JFrame {
     private void handleExtendBooking() {
         int selectedRow = bookingTable.getSelectedRow();
         if (selectedRow >= 0) {
-            JOptionPane.showMessageDialog(this, "Extend booking for: " + bookingTable.getValueAt(selectedRow, 1));
+            String bookingIdmod = bookingTable.getValueAt(selectedRow, 0).toString().substring(4);
+            int bookingId = (int) Integer.parseInt(bookingIdmod);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(bookingTable);
+            extendBooking(frame, bookingId);
         } else {
             JOptionPane.showMessageDialog(this, "Select a booking to extend");
         }
+    }
+    private void extendBooking(JFrame parent, int bookingId) {
+        JTextField newDateField = new JTextField(10);
+        JOptionPane optionPane = new JOptionPane(
+            new Object[] {
+                "Extend booking ID: " + bookingId,
+                "Enter new checkout date (YYYY-MM-DD):", newDateField
+            },
+            JOptionPane.QUESTION_MESSAGE,
+            JOptionPane.OK_CANCEL_OPTION);
+        JDialog dialog = optionPane.createDialog(parent, "Extend Booking");
+        dialog.setSize(400, 200);
+        dialog.pack();
+        dialog.setLocationRelativeTo(parent);
+        dialog.setVisible(true);
+        Object selectedValue = optionPane.getValue();
+            if (selectedValue != null && (int) selectedValue == JOptionPane.OK_OPTION) {
+                String newDate = newDateField.getText().trim();
+
+                JOptionPane infoPane = new JOptionPane(
+                        "Booking ID " + bookingId + " has been extended to " + newDate,
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                JDialog infoDialog = infoPane.createDialog(parent, "Extended");
+                infoDialog.setSize(400, 200);
+                infoDialog.setLocationRelativeTo(parent);
+                infoDialog.setVisible(true);
+            }
     }
 
     private void handleCancelBooking() {
         int selectedRow = bookingTable.getSelectedRow();
         if (selectedRow >= 0) {
-            bookingTable.setValueAt("Cancelled", selectedRow, 5);
-            JOptionPane.showMessageDialog(this, "Booking cancelled.");
+            String bookingIdmod = bookingTable.getValueAt(selectedRow, 0).toString().substring(4);
+            int bookingId = (int) Integer.parseInt(bookingIdmod);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(bookingTable);
+            cancelBooking(frame, bookingId);
         } else {
             JOptionPane.showMessageDialog(this, "Select a booking to cancel");
+        }
+    }
+    private void cancelBooking(JFrame parent, int bookingId) {
+        JOptionPane optionPane = new JOptionPane(
+            "Cancel booking ID: " + bookingId + "?",
+            JOptionPane.WARNING_MESSAGE,
+            JOptionPane.YES_NO_OPTION);
+        JDialog dialog = optionPane.createDialog(parent, "Cancel Booking");
+        dialog.setSize(400, 200);
+        dialog.pack();
+        dialog.setLocationRelativeTo(parent);
+        dialog.setVisible(true);
+
+        Object selectedValue = optionPane.getValue();
+        if (selectedValue != null && (int) selectedValue == JOptionPane.YES_OPTION) {
+            JOptionPane infoPane = new JOptionPane(
+                    "Booking ID " + bookingId + " has been cancelled.",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            JDialog infoDialog = infoPane.createDialog(parent, "Cancelled");
+            infoDialog.setSize(400, 200);
+            infoDialog.setLocationRelativeTo(parent);
+            infoDialog.setVisible(true);
         }
     }
     private void goBack() {
@@ -88,12 +145,12 @@ public class BookingFrame extends JFrame {
         //Back to Dashboard -- Jospeh!!
     }
 
-    private void centeringDialog(String message) {
+    /*private void centeringDialog(String message) {
         JOptionPane optionPane = new JOptionPane(message, JOptionPane.INFORMATION_MESSAGE);
         JDialog dialog = optionPane.createDialog(this, "Info");
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-    }
+    }*/
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new BookingFrame().setVisible(true));
