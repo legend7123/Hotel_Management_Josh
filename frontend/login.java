@@ -3,6 +3,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -33,7 +34,7 @@ public class login{
         panel.setBackground(Color.LIGHT_GRAY);
        
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        //creating the password field to enter the passkey
+   
         JTextField passwordInput = new JTextField();
         passwordInput.setBounds(130, 140, 200, 30);
         panel.add(passwordInput);
@@ -42,7 +43,7 @@ public class login{
       
 
 
-        JButton loginButton = new JButton("Login");//The login button
+        JButton loginButton = new JButton("Login");
         loginButton.setBounds(340, 140, 100, 30);
         loginButton.setForeground(Color.red);
         loginButton.setFocusable(false);
@@ -57,11 +58,26 @@ public class login{
             }
             else{
                 passwordInput.setText("");
+               int result = JOptionPane.showConfirmDialog(
+            frame,
+            "Incorrect Passkey. Do you want to try again?",
+            "Login Failed",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+       
+       
+        if (result == JOptionPane.YES_OPTION) {
+            
+            frame.dispose();            
+               login.main(new String[]{});
+            
+        }
             }
 
        });
 
-       //Setting up the frame and adding the panel to the frame
+      
         frame.setSize(1000, 1000);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
