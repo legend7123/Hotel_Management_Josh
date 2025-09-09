@@ -153,6 +153,9 @@ public class dashboard {
     btn2.addActionListener(e -> {
         restaurant_reservation.main(new String[]{});
     });
+    btn1.addActionListener(e->{
+        BookingFrame.main(new String[]{});
+    });
 
 }
 
