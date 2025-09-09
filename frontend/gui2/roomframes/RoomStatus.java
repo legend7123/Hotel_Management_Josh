@@ -10,16 +10,17 @@ public class RoomStatus extends JFrame {
     public RoomStatus() {
         setTitle("Room Status - Today");
         setSize(1800, 900);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Connect to DB, get room id, room no, type, status from bookings db
-        String[] headers = {"Room No", "Type", "Status"};
+        String[] headers = {"Room No", "Type", "Price", "Status"};
         Object[][] rooms = {
-                {101, "Single", "Available"},
-                {102, "Double", "Booked"},
-                {103, "Suite", "Under Maintenance"},
-                {104, "Single", "Booked"},
-                {105, "Double", "Available"}
+                {101, "Single", 1500, "Available"},
+                {102, "Double", 3000, "Booked"},
+                {103, "Suite", 4500, "Under Maintenance"},
+                {104, "Single", 1500, "Booked"},
+                {105, "Double", 3000, "Available"}
         };
 
         DefaultTableModel model = new DefaultTableModel(rooms, headers) {

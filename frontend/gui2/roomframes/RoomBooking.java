@@ -1,5 +1,6 @@
 package roomframes;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class RoomBooking extends JFrame {
@@ -9,22 +10,35 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
     public RoomBooking() {
         setTitle("New Room Booking");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1800,900);
+        setSize(800,900);
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         JPanel formPanel = new JPanel(new GridLayout(4, 2, 10, 10));
-        formPanel.setBorder(BorderFactory.createEmptyBorder(50, 200, 50, 200));
+        formPanel.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                "Booking Details",
+                TitledBorder.LEFT,
+                TitledBorder.TOP,
+                new Font("Arial", Font.BOLD, 14)
+        ));
+
 
         formPanel.add(new JLabel("Guest Name:"));
-        guestNameField = new JTextField();
+        guestNameField = new JTextField(30);
+        guestNameField.setPreferredSize(new Dimension(120, 25));
         formPanel.add(guestNameField);
 
         formPanel.add(new JLabel("Room Number:"));
-        roomNumberField = new JTextField();
-        formPanel.add(roomNumberField);
+        String[] roomTypes = {"Single", "Double", "Suite", "Deluxe"};
+        JComboBox<String> roomTypeDropdown = new JComboBox<>(roomTypes);
+        roomTypeDropdown.setSelectedIndex(0);
+        roomTypeDropdown.setPreferredSize(new Dimension(120, 25));
+        formPanel.add(roomTypeDropdown);
 
         formPanel.add(new JLabel("Check-In Date:"));
         checkInField = new JTextField("YYYY-MM-DD");
+
         formPanel.add(checkInField);
 
         formPanel.add(new JLabel("Check-Out Date:"));
@@ -38,7 +52,9 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
         JButton payButton = new JButton("Confirm & Pay");
         payButton.addActionListener(e -> {
             dispose();
-            //Redirects to Payment
+            //Calculate bill
+            //Payment class logic
+            new PaymentFrame(0.0).setVisible(true);
         });
 
         JButton cancelButton = new JButton("Cancel");

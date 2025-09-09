@@ -13,6 +13,7 @@ public class BookingFrame extends JFrame {
     public BookingFrame() {
         setTitle("Bookings");
         setSize(1800, 900);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -75,7 +76,7 @@ public class BookingFrame extends JFrame {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(bookingTable);
             extendBooking(frame, bookingId);
         } else {
-            JOptionPane.showMessageDialog(this, "Select a booking to extend");
+            centeringDialog("Select a booking to extend", "Alert");
         }
     }
     private void extendBooking(JFrame parent, int bookingId) {
@@ -101,7 +102,7 @@ public class BookingFrame extends JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
 
                 JDialog infoDialog = infoPane.createDialog(parent, "Extended");
-                infoDialog.setSize(400, 200);
+                infoDialog.setSize(450, 200);
                 infoDialog.setLocationRelativeTo(parent);
                 infoDialog.setVisible(true);
             }
@@ -115,7 +116,7 @@ public class BookingFrame extends JFrame {
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(bookingTable);
             cancelBooking(frame, bookingId);
         } else {
-            JOptionPane.showMessageDialog(this, "Select a booking to cancel");
+            centeringDialog("Select a booking to cancel", "Alert");
         }
     }
     private void cancelBooking(JFrame parent, int bookingId) {
@@ -146,12 +147,12 @@ public class BookingFrame extends JFrame {
         //Back to Dashboard -- Jospeh!!
     }
 
-    /*private void centeringDialog(String message) {
+    private void centeringDialog(String message, String title) {
         JOptionPane optionPane = new JOptionPane(message, JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog(this, "Info");
+        JDialog dialog = optionPane.createDialog(this, title);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-    }*/
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new BookingFrame().setVisible(true));
