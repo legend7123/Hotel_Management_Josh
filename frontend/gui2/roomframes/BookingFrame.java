@@ -1,3 +1,4 @@
+package roomframes;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -64,7 +65,7 @@ public class BookingFrame extends JFrame {
 
     private void newBooking() {
         dispose();
-        //New Booking
+        new RoomBooking().setVisible(true);
     }
     private void handleExtendBooking() {
         int selectedRow = bookingTable.getSelectedRow();
