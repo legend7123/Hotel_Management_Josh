@@ -3,8 +3,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+
 // The hotel system uses a passkey which identifies each hotel and access its services
 public class login{
     public static void main(String args [])
@@ -31,23 +34,50 @@ public class login{
         panel.setBackground(Color.LIGHT_GRAY);
        
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        //creating the password field to enter the passkey
-        JPasswordField passwordInput = new JPasswordField();
+   
+        JTextField passwordInput = new JTextField();
         passwordInput.setBounds(130, 140, 200, 30);
         panel.add(passwordInput);
-        JButton loginButton = new JButton("Login");//The login button
+
+        
+      
+
+
+        JButton loginButton = new JButton("Login");
         loginButton.setBounds(340, 140, 100, 30);
         loginButton.setForeground(Color.red);
         loginButton.setFocusable(false);
         panel.add(loginButton);
         
-        // Adding action listener to the login button
-        //loginButton.addActionListener(e -> {
-           // String password = new String(passwordInput.getPassword());
-            //logic of passkey verification
-       // });
+        loginButton.addActionListener(e->{
+            String passkey="admin123";
+        String userInput=passwordInput.getText(); 
+            if(userInput.equals(passkey)){
+                frame.dispose();
+                dashboard.main(new String[]{});
+            }
+            else{
+                passwordInput.setText("");
+               int result = JOptionPane.showConfirmDialog(
+            frame,
+            "Incorrect Passkey. Do you want to try again?",
+            "Login Failed",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+       
+       
+        if (result == JOptionPane.YES_OPTION) {
+            
+            frame.dispose();            
+               login.main(new String[]{});
+            
+        }
+            }
 
-       //Setting up the frame and adding the panel to the frame
+       });
+
+      
         frame.setSize(1000, 1000);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
