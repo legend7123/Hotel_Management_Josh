@@ -50,7 +50,7 @@ public class login{
         
         loginButton.addActionListener(e->{
             String passkey="admin123";
-        String userInput=passwordInput.getText();
+        String userInput=passwordInput.getText(); 
             if(userInput.equals(passkey)){
                 frame.dispose();
                 dashboard.main(new String[]{});
