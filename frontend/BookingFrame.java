@@ -84,7 +84,7 @@ public class BookingFrame extends JFrame {
     }
     private void goBack() {
         dispose();
-        //Back to Dashboard -- Jospeh!!
+        dashboard.main(new String[]{})
     }
 
     private void centeringDialog(String message) {
