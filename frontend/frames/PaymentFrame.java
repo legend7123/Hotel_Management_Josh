@@ -1,12 +1,9 @@
-package roomframes;
 
-import javax.swing.*;
+
 import java.awt.*;
-import java.awt.event.*;
-import java.util.Random;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import javax.imageio.ImageIO;
+import java.util.Random;
+import javax.swing.*;
 
 public class PaymentFrame extends JFrame {
     private JLabel billAmount;
