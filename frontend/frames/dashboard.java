@@ -47,7 +47,7 @@ public class dashboard {
     btn2.setBackground(new Color(0, 255, 0));
     btn2.setFocusPainted(false);
 
-    JButton btn3 = new JButton("<html>Rooms <br> Availability<html>");
+    JButton btn3 = new JButton("<html>Rooms <br> Status<html>");
     btn3.setBounds(10, 350, 180, 100);
     btn3.setFont(btn3.getFont().deriveFont(15.0f));
     sidebar.add(btn3);
@@ -156,7 +156,9 @@ public class dashboard {
     btn1.addActionListener(e->{
         BookingFrame.main(new String[]{});
     });
-
+    btn3.addActionListener(e->{
+        RoomStatus.main(new String[]{});
+    });
 }
 
 }

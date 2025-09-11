@@ -1,7 +1,7 @@
-package roomframes;
+
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 
 public class RoomStatus extends JFrame {
 
@@ -36,13 +36,13 @@ public class RoomStatus extends JFrame {
         JButton backButton = new JButton("← Back to Dashboard");
         backButton.addActionListener(e -> {
             dispose();
-            dashboard.main(new String[]{})
+            dashboard.main(new String[]{});
         });
 
         JButton newBookingButton = new JButton("New Booking");
         newBookingButton.addActionListener(e -> {
             dispose();
-            new RoomBooking().setVisible(true);
+            RoomBooking.main(new String[]{});
         });
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
