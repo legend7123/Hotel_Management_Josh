@@ -1,4 +1,4 @@
-package roomframes;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -54,13 +54,13 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
             dispose();
             //Calculate bill
             //Payment class logic
-            new PaymentFrame(0.0).setVisible(true);
+            PaymentFrame.main(new String[]{});
         });
 
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(e -> {
             dispose();
-            new BookingFrame().setVisible(true);
+            BookingFrame.main(new String[]{});
         });
 
         buttonPanel.add(payButton);
