@@ -12,7 +12,7 @@ public class BookingFrame extends JFrame {
 
     public BookingFrame() {
         setTitle("Bookings");
-        setSize(1800, 900);
+        setSize(1000, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
