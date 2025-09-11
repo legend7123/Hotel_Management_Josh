@@ -36,7 +36,7 @@ public class RoomStatus extends JFrame {
         JButton backButton = new JButton("← Back to Dashboard");
         backButton.addActionListener(e -> {
             dispose();
-            dashboard.main(new String[]{});
+            
         });
 
         JButton newBookingButton = new JButton("New Booking");
