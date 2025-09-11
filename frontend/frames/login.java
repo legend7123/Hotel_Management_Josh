@@ -80,6 +80,7 @@ public class login{
       
         frame.setSize(1000, 1000);
         frame.setResizable(false);
+         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add(panel);

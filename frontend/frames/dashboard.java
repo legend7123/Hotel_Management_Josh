@@ -4,9 +4,10 @@ import javax.swing.*;
 public class dashboard {
     public static void main(String args[]){
         JFrame frame = new JFrame("Dashboard");
-        frame.setSize(1000, 1000);
+        frame.setSize(1060, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
         JPanel navbar = new JPanel();

@@ -9,6 +9,7 @@ public class restaurant_reservation {
             frame.setSize(600, 600);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setLayout(null);
+            frame.setLocationRelativeTo(null);
             frame.setResizable(false);
 
             JLabel label = new JLabel("Restaurant Reservation ");

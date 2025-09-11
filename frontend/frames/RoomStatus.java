@@ -9,9 +9,10 @@ public class RoomStatus extends JFrame {
 
     public RoomStatus() {
         setTitle("Room Status - Today");
-        setSize(1800, 900);
+        setSize(1000, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         // Connect to DB, get room id, room no, type, status from bookings db
         String[] headers = {"Room No", "Type", "Price", "Status"};
