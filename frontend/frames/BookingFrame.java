@@ -14,9 +14,10 @@ public class BookingFrame extends JFrame {
         setTitle("Bookings");
         setSize(1000, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
+        setResizable(false);
 
         // Table Coloumns
         String[] columns = {"Booking ID", "Guest", "Room", "Check In", "Check Out", "Status"};

@@ -17,6 +17,7 @@ public class PaymentFrame extends JFrame {
         setSize(600,800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         setLayout(new BorderLayout());
 
