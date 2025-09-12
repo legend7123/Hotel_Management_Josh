@@ -4,7 +4,7 @@ import javax.swing.*;
 public class dashboard {
     public static void main(String args[]){
         JFrame frame = new JFrame("Dashboard");
-        frame.setSize(1060, 1000);
+        frame.setSize(1000, 740);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
