@@ -1,7 +1,7 @@
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
 
 public class RoomBooking extends JFrame {
 
@@ -10,7 +10,7 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
     public RoomBooking() {
         setTitle("New Room Booking");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800,900);
+        setSize(1000, 600);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         setResizable(false);
