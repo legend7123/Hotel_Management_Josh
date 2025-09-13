@@ -24,27 +24,27 @@ public class login{
 
         JLabel passwordLabel = new JLabel("Passkey:");
         passwordLabel.setFont(passwordLabel.getFont().deriveFont(18.0f)); // To change the font size of the password label
-        passwordLabel.setBounds(40, 140, 200, 30); // Set position and size of password label
+        passwordLabel.setBounds(40, 120, 200, 30); // Adjusted position for better centering
         passwordLabel.setForeground(Color.BLUE); // Set text color to blue
        
         panel.add(passwordLabel);
         
         panel.add(loginLabel);
-        panel.setBounds(230, 250, 500, 200);
+        
+        // Center the panel in the frame
+      
+        
+        panel.setBounds(200,200, 500, 200);
         panel.setBackground(Color.LIGHT_GRAY);
        
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
    
         JTextField passwordInput = new JTextField();
-        passwordInput.setBounds(130, 140, 200, 30);
+        passwordInput.setBounds(130, 120, 200, 30); // Adjusted to align with label
         panel.add(passwordInput);
 
-        
-      
-
-
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(340, 140, 100, 30);
+        loginButton.setBounds(340, 120, 100, 30); // Adjusted to align with input field
         loginButton.setForeground(Color.red);
         loginButton.setFocusable(false);
         panel.add(loginButton);
@@ -76,15 +76,15 @@ public class login{
             }
 
        });
-
-      
-        frame.setSize(1000, 1000);
+    
+        
+        frame.setSize(900, 700);
         frame.setResizable(false);
          frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add(panel);
-        frame.getContentPane().setBackground(new Color(0, 0, 128));
+        frame.getContentPane().setBackground(new Color(255, 255, 255));
         frame.setLayout(null);
 
 
