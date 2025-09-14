@@ -62,7 +62,7 @@ public class login{
         
         JLabel footer= new JLabel("@2024 All rights reserved | Hotel Management System");
         footer.setBounds(250, 600, 400, 30);
-        footer.setForeground(Color.DARK_GRAY);
+        footer.setForeground(Color.WHITE);
         frame.add(footer);
 
         frame.setLayout(null);
@@ -103,7 +103,7 @@ public class login{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);        
         frame.add(panel);              
-        frame.getContentPane().setBackground(new Color(240,248,255)); 
+        frame.getContentPane().setBackground(new Color(66,66,183)); 
     }
 
     
