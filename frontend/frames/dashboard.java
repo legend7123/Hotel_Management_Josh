@@ -4,7 +4,7 @@ import javax.swing.*;
 public class dashboard {
     public static void main(String args[]){
         JFrame frame = new JFrame("Dashboard");
-        frame.setSize(1060, 1000);
+        frame.setSize(1000, 740);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -120,6 +120,11 @@ public class dashboard {
     dateTimeLabel.setBounds(460, 465, 400, 30);
     frame.add(dateTimeLabel);
   
+        JLabel footer= new JLabel("@2024 All rights reserved | Hotel Management System");
+        footer.setBounds(450, 650, 400, 30);
+        footer.setForeground(Color.DARK_GRAY);
+        frame.add(footer);
+
     // Timer to update date and time every second
     Timer timer= new Timer(1000,e->{
         java.time.LocalDateTime now =java.time.LocalDateTime.now();

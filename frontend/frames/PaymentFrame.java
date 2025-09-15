@@ -14,7 +14,7 @@ public class PaymentFrame extends JFrame {
 
     public PaymentFrame(double amount) {
         setTitle("Payment");
-        setSize(600,800);
+        setSize(1000, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
