@@ -1,33 +1,18 @@
-package com.hotel.hotelmanagement.model;
+package com.hotel.hotelmanagement.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name="payment")
-public class Payment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "user_id")
+public class PaymentRequestDTO {
     private Long userId;
-    private Float amount;
+    private  Float amount;
     private Boolean status;
 
     //constructor
-    public Payment(){};
-
-    public Payment(Long userId,Float amount,Boolean status){
-        this.userId=userId;
+    public PaymentRequestDTO(Long userId, Float amount, Boolean status){
+        this.userId= userId;
         this.amount=amount;
         this.status=status;
     }
 
     //getter
-    public Long getId() {
-        return id;
-    }
-
     public Long getUserId() {
         return userId;
     }

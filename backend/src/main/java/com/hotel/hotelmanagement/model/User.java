@@ -15,7 +15,7 @@ public class User {
     private String username;
     private String email;
     private String phone;
-    private  String type;
+    private String type;
     private Integer loyalty=0;
 
     //one user -> many room bookings
