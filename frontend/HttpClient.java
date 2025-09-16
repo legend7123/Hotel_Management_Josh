@@ -7,28 +7,37 @@ import java.net.URL;
 //@Sarath, read throught this and comment if this is the expected implementation
 public class HttpClient {
     public static String sendGET(String urlStr) throws Exception {
-        URL url = new URL(urlStr);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        int status = conn.getResponseCode();
-        if (status == 200) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
+        try {
+            URL url = new URL(urlStr);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            int status = conn.getResponseCode();
+            if (status == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String inputLine;
+                StringBuilder content = new StringBuilder();
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+                in.close();
+                //JSONObject jsonResponse = new JSONObject(response.toString());
+                //
+                //int statusCode = jsonResponse.getInt("status");
+                //Object body = jsonResponse.get("body");
+                return content.toString();
             }
-            in.close();
-            return content.toString();
+            else if (status == 404) {
+                throw new RuntimeException("Resource not found");
+            } 
+            else if (status == 500) {
+                throw new RuntimeException("Server error occurred");
+            } 
+            else {
+                throw new RuntimeException("Unexpected status: " + status);
+            }
         }
-        else if (status == 404) {
-            throw new RuntimeException("Resource not found");
-        } 
-        else if (status == 500) {
-            throw new RuntimeException("Server error occurred");
-        } 
-        else {
-            throw new RuntimeException("Unexpected status: " + status);
+        catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
