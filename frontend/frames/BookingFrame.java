@@ -18,6 +18,8 @@ public class BookingFrame extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         setResizable(false);
+        ImageIcon icon = new ImageIcon("HMSICON.png");
+        setIconImage(icon.getImage());
 
         // Table Coloumns
         String[] columns = {"Booking ID", "Guest", "Room", "Check In", "Check Out", "Status"};
