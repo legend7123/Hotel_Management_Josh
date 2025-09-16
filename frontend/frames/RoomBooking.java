@@ -25,12 +25,12 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
         ));
 
 
-        formPanel.add(new JLabel("Guest Name:"));
+        formPanel.add(new JLabel("Registered Email ID:"));
         guestNameField = new JTextField(30);
         guestNameField.setPreferredSize(new Dimension(120, 25));
         formPanel.add(guestNameField);
 
-        formPanel.add(new JLabel("Room Number:"));
+        formPanel.add(new JLabel("Room Type:"));
         String[] roomTypes = {"Single", "Double", "Suite", "Deluxe"};
         JComboBox<String> roomTypeDropdown = new JComboBox<>(roomTypes);
         roomTypeDropdown.setSelectedIndex(0);
@@ -50,9 +50,18 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
+        JButton newRegisterButton = new JButton("Register New User");
+        newRegisterButton.addActionListener(e -> {
+            dispose();
+            NewUserFrame.main(new String[]{});
+        });
+
         JButton payButton = new JButton("Confirm & Pay");
         payButton.addActionListener(e -> {
             dispose();
+            //Check if email id is already registered
+            //else prompt new user registration
+            //Check if room is available
             //Calculate bill
             //Payment class logic
             PaymentFrame.main(new String[]{});
@@ -64,6 +73,7 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
             BookingFrame.main(new String[]{});
         });
 
+        buttonPanel.add(newRegisterButton);
         buttonPanel.add(payButton);
         buttonPanel.add(cancelButton);
 
