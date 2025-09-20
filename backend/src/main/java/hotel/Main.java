@@ -24,7 +24,7 @@ public class Main {
             userController.registerRoutes(server);
             server.setExecutor(null);
             server.start();
-            System.out.println("Server started on port 8000");
+            System.out.println("Server started on port 8080");
 
         } catch (Exception e) {
             e.printStackTrace();

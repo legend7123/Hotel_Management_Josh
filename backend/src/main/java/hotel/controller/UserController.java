@@ -29,7 +29,7 @@ public class UserController{
 		this.conn = conn;
 	}
 
-	==========================================================================================================================================
+	/*==================================================*/
 
 	//Register routes
 	public void registerRoutes(HttpServer server){
@@ -37,7 +37,7 @@ public class UserController{
 		server.createContext("/user/",this::handleUserIdPath);
 	}
 
-	==========================================================================================================================================
+	/*====================================================*/
 
 	//Handle METHOD for /user
 	public void handleUserPath(HttpExchange exchange) throws IOException{
@@ -53,13 +53,20 @@ public class UserController{
 	}
 
 	//Handle METHOD for /user/
-	public void handleUserIdPath(HttpExchange exchange){
+	public void handleUserIdPath(HttpExchange exchange) throws IOException{
 		String method = exchange.getRequestMethod();
+		String path = exchange.getRequestURI().getPath(); // /user/1
+    		String[] parts = path.split("/");
+    		Long id = Long.parseLong(parts[2]);
 
-		switch(method.toUpperCase()){}
+		if(method!=null && id!=0){
+			switch(method.toUpperCase()){
+				case "GET" : displayUserById(exchange,id);
+			}
+		}
 	}
 
-	==========================================================================================================================================
+	/*=======================================================*/
 
 	//GET /user
 	public void displayAllUsers(HttpExchange exchange) throws IOException{
@@ -80,6 +87,25 @@ public class UserController{
     			ResponseDTO response = new ResponseDTO(500,e.getMessage());
 			ResponseUtils.sendResponse(exchange,response);
 		}
+	}
+
+	//GET user/id
+	public void displayUserById(HttpExchange exchange,Long id) throws IOException{
+			System.out.println("Received request: " + exchange.getRequestMethod() + " " + exchange.getRequestURI());
+
+			try(Connection conn = Utils.getConnection()){
+				User user = userService.getById(id,conn);
+				ResponseDTO response = new ResponseDTO(200,user);
+				ResponseUtils.sendResponse(exchange,response);
+			} catch(SQLException e){
+				System.out.println("error :" + e.getMessage());
+	    			ResponseDTO response = new ResponseDTO(500,e.getMessage());
+				ResponseUtils.sendResponse(exchange,response);
+			} catch(Exception e){
+				System.out.println("error :" + e.getMessage());
+    				ResponseDTO response = new ResponseDTO(500,e.getMessage());
+				ResponseUtils.sendResponse(exchange,response);
+			}
 	}
 
 
@@ -127,6 +153,8 @@ public class UserController{
 			System.out.println("Error creating user: " + e.getMessage());
 		}
 	}
+
+
 
 /*	private vo
  *	id sendResponse(HttpExchange exchange, String response) throws IOException {
