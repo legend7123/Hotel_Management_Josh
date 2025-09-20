@@ -13,6 +13,15 @@ public class ResponseUtils {
 	System.out.println("Response : " + response);
         String jsonResponse = convertToJson(response);
 
+	int statusCode = response.getStatus();
+
+        // If status = 204 No Content → no body allowed
+        if (statusCode == 204) {
+            exchange.sendResponseHeaders(204, -1); // no body
+            exchange.close();
+            return;
+        }
+
         // Set response headers
         exchange.getResponseHeaders().set("Content-Type", "application/json");
         byte[] bytes = jsonResponse.getBytes("UTF-8");
