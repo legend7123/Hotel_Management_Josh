@@ -13,6 +13,8 @@ private JTextField guestNameField, emailField, phoneNoField;
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         setResizable(false);
+        ImageIcon icon = new ImageIcon("HMSICON.png");
+        setIconImage(icon.getImage());
 
         JPanel formPanel = new JPanel(new GridLayout(4, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createTitledBorder(
@@ -22,7 +24,6 @@ private JTextField guestNameField, emailField, phoneNoField;
                 TitledBorder.TOP,
                 new Font("Arial", Font.BOLD, 14)
         ));
-
 
         formPanel.add(new JLabel("Guest Name:"));
         guestNameField = new JTextField(30);
