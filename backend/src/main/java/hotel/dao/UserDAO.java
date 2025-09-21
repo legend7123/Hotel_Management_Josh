@@ -49,9 +49,10 @@ public class UserDAO{
 				users.add(user);
             		}
 	    	} catch (SQLException e) {
-            		System.out.println("Error fetching users: " + e.getMessage());
-			throw new RuntimeException(e);
-        	}
+            		System.out.println("Error fetching users: " + e.getMessage());	
+        	} catch(RuntimeException e){
+			System.out.println("Error fetchinh users: " + e.getMessage());
+		}
 
         	return users;
 	}
