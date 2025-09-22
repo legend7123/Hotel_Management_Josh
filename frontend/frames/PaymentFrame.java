@@ -18,6 +18,8 @@ public class PaymentFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        ImageIcon icon = new ImageIcon("HMSICON.png");
+        setIconImage(icon.getImage());
 
         setLayout(new BorderLayout());
 
