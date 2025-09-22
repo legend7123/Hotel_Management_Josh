@@ -30,7 +30,7 @@ public class UserService{
 
 	//Find by id
 	public User getById(Long id,Connection conn){
-		UserDAO userDAO = new UserDAO();
+//		UserDAO userDAO = new UserDAO();
 		User user = userDAO.findById(id,conn);
 
 		if(user == null){

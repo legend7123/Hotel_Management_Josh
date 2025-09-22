@@ -23,11 +23,11 @@ import util.HelperUtils;
 
 public class UserController{
 	private final UserService userService;
-	private final Connection conn;
+//	private final Connection conn;
 
-	public UserController(UserService userService,Connection conn){
+	public UserController(UserService userService){
 		this.userService = userService;
-		this.conn = conn;
+//		this.conn = conn;
 	}
 
 	/*==================================================*/

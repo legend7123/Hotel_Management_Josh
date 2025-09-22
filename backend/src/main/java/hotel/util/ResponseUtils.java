@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import dto.ResponseDTO;
 import model.User;
+import model.Payment;
 
 public class ResponseUtils {
 
@@ -70,6 +71,18 @@ public class ResponseUtils {
                     + "\"loyalty\":" + u.getLoyalty()
                     + "}";
         }
+
+	//Handle Payment
+	if (obj instanceof Payment){
+		Payment p = (Payment) obj;
+		return "{"
+			+ "\"id\":" + p.getId() + ","
+			+ "\"userId\":" + p.getUserId() + ","
+			+ "\"bookingId\":" + p.getBookingId() + ","
+			+ "\"amount\":" + p.getAmount() + ","
+			+ "\"status\":" + p.getStatus()
+			+ "}";
+	}
 
         // Handle ResponseDTO
         if (obj instanceof ResponseDTO) {
