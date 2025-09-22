@@ -14,6 +14,8 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         setResizable(false);
+        ImageIcon icon = new ImageIcon("HMSICON.png");
+        setIconImage(icon.getImage());
 
         JPanel formPanel = new JPanel(new GridLayout(4, 2, 10, 10));
         formPanel.setBorder(BorderFactory.createTitledBorder(
@@ -39,7 +41,6 @@ private JTextField guestNameField, roomNumberField, checkInField, checkOutField;
 
         formPanel.add(new JLabel("Check-In Date:"));
         checkInField = new JTextField("YYYY-MM-DD");
-
         formPanel.add(checkInField);
 
         formPanel.add(new JLabel("Check-Out Date:"));
