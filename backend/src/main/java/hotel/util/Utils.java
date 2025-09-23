@@ -11,6 +11,11 @@ public class Utils{
     private static final String password = "postgres";
 
     public static Connection getConnection() throws SQLException{
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("PostgreSQL JDBC Driver not found. Please add it to your classpath.", e);
+        }
         return DriverManager.getConnection(url,user,password);
     }
 
