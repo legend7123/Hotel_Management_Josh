@@ -13,6 +13,7 @@ public class RoomStatus extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        
 
         // Connect to DB, get room id, room no, type, status from bookings db
         String[] headers = {"Room No", "Type", "Price", "Status"};

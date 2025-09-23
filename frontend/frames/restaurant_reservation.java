@@ -11,6 +11,8 @@ public class restaurant_reservation {
             frame.setLayout(null);
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
+            ImageIcon icon = new ImageIcon("HMSICON.png");
+        frame.setIconImage(icon.getImage());
 
             JLabel label = new JLabel("Restaurant Reservation ");
             label.setBounds(150, 30, 300, 30);
