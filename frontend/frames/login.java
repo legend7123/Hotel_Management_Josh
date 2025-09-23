@@ -64,7 +64,7 @@ public class login{
         loginButton.setFocusable(false);
         panel.add(loginButton);
         
-        JLabel footer= new JLabel("@2024 All rights reserved | Hotel Management System");
+        JLabel footer= new JLabel("@2025 All rights reserved | Hotel Management System");
         footer.setBounds(250, 600, 400, 30);
         footer.setForeground(Color.WHITE);
         frame.add(footer);
@@ -96,7 +96,11 @@ public class login{
                login.main(new String[]{});
             
         }
+        else{
+            frame.dispose();
+        }
             }
+        
 
        });
     

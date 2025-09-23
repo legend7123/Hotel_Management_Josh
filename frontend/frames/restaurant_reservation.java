@@ -91,20 +91,8 @@ public class restaurant_reservation {
             chartButton.setBounds(150, 350, 200, 30);
             panel.add(chartButton);
             chartButton.addActionListener(e -> {
-                // String[] columns = {"Time Slot", "Available Tables", "Reserved Tables"};
-                // Object[][] data = {
-                //     {"12:00 - 13:00", 5, 3},
-                //     {"13:00 - 14:00", 4, 4},
-                //     {"14:00 - 15:00", 6, 2},
-                //     {"18:00 - 19:00", 3, 5},
-                //     {"19:00 - 20:00", 2, 6},
-                //     {"20:00 - 21:00", 4, 4}
-                // };
-                // JTable table = new JTable(data, columns);
-                // table.setEnabled(false);
-                // JScrollPane scrollPane = new JScrollPane(table);
-                // scrollPane.setPreferredSize(new java.awt.Dimension(400, 150));
-                // JOptionPane.showMessageDialog(frame, scrollPane, "Reservation Chart", JOptionPane.INFORMATION_MESSAGE);
+                restaurant_chart.main(new String[]{});
+                
             });
 
             frame.setVisible(true);
