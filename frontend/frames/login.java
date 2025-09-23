@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-
+ 
 // The hotel system uses a passkey which identifies each hotel and access its services
 public class login{
     public static void main(String args [])
