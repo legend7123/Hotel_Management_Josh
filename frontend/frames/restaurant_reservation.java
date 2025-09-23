@@ -11,6 +11,8 @@ public class restaurant_reservation {
             frame.setLayout(null);
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
+            ImageIcon icon = new ImageIcon("HMSICON.png");
+        frame.setIconImage(icon.getImage());
 
             JLabel label = new JLabel("Restaurant Reservation ");
             label.setBounds(150, 30, 300, 30);
@@ -48,7 +50,7 @@ public class restaurant_reservation {
             guestsSpinner.setBounds(200, 200, 150, 30);
             panel.add(guestsSpinner);
             JButton submitButton = new JButton("Submit");
-            submitButton.setBounds(200, 300, 100, 30);
+            submitButton.setBounds(200, 280, 100, 30);
             panel.add(submitButton);
             submitButton.addActionListener(e -> {
                 String name = nameField.getText().trim();
@@ -83,6 +85,26 @@ public class restaurant_reservation {
                         "Reservation made for " + name + " on " + date + " at " + time + " for " + guests + " guests.",
                         "Reservation Confirmed", JOptionPane.INFORMATION_MESSAGE);
                 }
+            });
+
+            JButton chartButton = new JButton("View Reservation Chart");
+            chartButton.setBounds(150, 350, 200, 30);
+            panel.add(chartButton);
+            chartButton.addActionListener(e -> {
+                // String[] columns = {"Time Slot", "Available Tables", "Reserved Tables"};
+                // Object[][] data = {
+                //     {"12:00 - 13:00", 5, 3},
+                //     {"13:00 - 14:00", 4, 4},
+                //     {"14:00 - 15:00", 6, 2},
+                //     {"18:00 - 19:00", 3, 5},
+                //     {"19:00 - 20:00", 2, 6},
+                //     {"20:00 - 21:00", 4, 4}
+                // };
+                // JTable table = new JTable(data, columns);
+                // table.setEnabled(false);
+                // JScrollPane scrollPane = new JScrollPane(table);
+                // scrollPane.setPreferredSize(new java.awt.Dimension(400, 150));
+                // JOptionPane.showMessageDialog(frame, scrollPane, "Reservation Chart", JOptionPane.INFORMATION_MESSAGE);
             });
 
             frame.setVisible(true);

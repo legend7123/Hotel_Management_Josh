@@ -9,6 +9,8 @@ public class dashboard {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
+        ImageIcon icon = new ImageIcon("HMSICON.png");
+        frame.setIconImage(icon.getImage());
 
         JPanel navbar = new JPanel();
         navbar.setBounds(0, 0, 1000, 100);
