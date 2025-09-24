@@ -122,7 +122,7 @@ public class dashboard {
     dateTimeLabel.setBounds(460, 465, 400, 30);
     frame.add(dateTimeLabel);
   
-        JLabel footer= new JLabel("@2024 All rights reserved | Hotel Management System");
+        JLabel footer= new JLabel("@2025 All rights reserved | Hotel Management System");
         footer.setBounds(450, 650, 400, 30);
         footer.setForeground(Color.DARK_GRAY);
         frame.add(footer);
