@@ -1,8 +1,6 @@
 package dao;
 
 import model.RoomBooking;
-import model.User;
-import model.Room;
 import util.Utils;
 
 import java.sql.*;
@@ -17,8 +15,8 @@ public class RoomBookingDAO {
         try (Connection conn = Utils.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setLong(1, booking.getUser().getId());
-            ps.setLong(2, booking.getRoom().getId());
+            ps.setLong(1, booking.getUserId());
+            ps.setLong(2, booking.getRoomId());
             ps.setTimestamp(3, Timestamp.valueOf(booking.getCheckIn().atStartOfDay()));
             ps.setTimestamp(4, Timestamp.valueOf(booking.getCheckOut().atStartOfDay()));
             ps.setDouble(5, booking.getTotalPrice());
@@ -67,8 +65,8 @@ public class RoomBookingDAO {
         try (Connection conn = Utils.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setLong(1, booking.getUser().getId());
-            ps.setLong(2, booking.getRoom().getId());
+            ps.setLong(1, booking.getUserId());
+            ps.setLong(2, booking.getRoomId());
             ps.setTimestamp(3, Timestamp.valueOf(booking.getCheckIn().atStartOfDay()));
             ps.setTimestamp(4, Timestamp.valueOf(booking.getCheckOut().atStartOfDay()));
             ps.setDouble(5, booking.getTotalPrice());
@@ -93,19 +91,12 @@ public class RoomBookingDAO {
         }
     }
 
-    // Map DB row to RoomBooking
+    // Map DB row to RoomBooking - SIMPLIFIED!
     private RoomBooking mapRow(ResultSet rs) throws SQLException {
         RoomBooking booking = new RoomBooking();
         booking.setId(rs.getLong("id"));
-
-        User user = new User();
-        user.setId(rs.getLong("userId"));
-        booking.setUser(user);
-
-        Room room = new Room();
-        room.setId(rs.getLong("roomId"));
-        booking.setRoom(room);
-
+        booking.setUserId(rs.getLong("userId"));      // Directly set userId
+        booking.setRoomId(rs.getLong("roomId"));      // Directly set roomId
         booking.setCheckIn(rs.getTimestamp("checkIn").toLocalDateTime().toLocalDate());
         booking.setCheckOut(rs.getTimestamp("checkOut").toLocalDateTime().toLocalDate());
         booking.setTotalPrice(rs.getDouble("totalPrice"));

@@ -4,8 +4,6 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 import dto.ResponseDTO;
 import model.RoomBooking;
-import model.Room;
-import model.User;
 import service.RoomBookingService;
 import util.HelperUtils;
 import util.ResponseUtils;
@@ -89,13 +87,15 @@ public class RoomBookingController {
         LocalDate checkOut = LocalDate.parse(HelperUtils.extractJsonValue(body, "checkOut"));
         Double totalPrice = Double.parseDouble(HelperUtils.extractJsonValue(body, "totalPrice"));
 
+        // Create RoomBooking with userId and roomId directly
         RoomBooking booking = new RoomBooking();
         booking.setId(id);
-        User user = new User(); user.setId(userId); booking.setUser(user);
-        Room room = new Room(); room.setId(roomId); booking.setRoom(room);
+        booking.setUserId(userId);
+        booking.setRoomId(roomId);
         booking.setCheckIn(checkIn);
         booking.setCheckOut(checkOut);
         booking.setTotalPrice(totalPrice);
+        
         return booking;
     }
 

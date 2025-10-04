@@ -4,26 +4,26 @@ import java.time.LocalDate;
 
 public class RoomBooking {
     private Long id;
-    private User user;
-    private Room room;
+    private Long userId;
+    private Long roomId;
     private LocalDate checkIn;
     private LocalDate checkOut;
     private Double totalPrice;
 
     public RoomBooking() {}
 
-    public RoomBooking(Long id, User user, Room room, LocalDate checkIn, LocalDate checkOut, Double totalPrice) {
+    public RoomBooking(Long id, Long userId, Long roomId, LocalDate checkIn, LocalDate checkOut, Double totalPrice) {
         this.id = id;
-        this.user = user;
-        this.room = room;
+        this.userId = userId;
+        this.roomId = roomId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.totalPrice = totalPrice;
     }
 
-    public RoomBooking(User user, Room room, LocalDate checkIn, LocalDate checkOut, Double totalPrice) {
-        this.user = user;
-        this.room = room;
+    public RoomBooking(Long userId, Long roomId, LocalDate checkIn, LocalDate checkOut, Double totalPrice) {
+        this.userId = userId;
+        this.roomId = roomId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.totalPrice = totalPrice;
@@ -33,11 +33,11 @@ public class RoomBooking {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 
-    public Room getRoom() { return room; }
-    public void setRoom(Room room) { this.room = room; }
+    public Long getRoomId() { return roomId; }
+    public void setRoomId(Long roomId) { this.roomId = roomId; }
 
     public LocalDate getCheckIn() { return checkIn; }
     public void setCheckIn(LocalDate checkIn) { this.checkIn = checkIn; }
